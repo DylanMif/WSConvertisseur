@@ -32,6 +32,7 @@ namespace WSConvertisseur.Controllers
         /// <returns>Http repsponse</returns>
         // GET: api/<DevisesController>
         [HttpGet]
+        [ProducesResponseType(200)]
         public IEnumerable<Devise> GetAll()
         {
             return Devises;
@@ -46,6 +47,8 @@ namespace WSConvertisseur.Controllers
         /// <response code="404">When the currency id is not found</response>
         // GET api/<DevisesController>/5
         [HttpGet("{id}", Name = "GetDevise")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         public ActionResult<Devise> GetById(int id)
         {
             Devise? _devise = Devises.FirstOrDefault(d => d.Id == id);
@@ -61,8 +64,12 @@ namespace WSConvertisseur.Controllers
         /// </summary>
         /// <param name="_devise">The devise to add</param>
         /// <returns>Http response</returns>
+        /// <response code="201">When the devise is created</response>
+        /// <response code="400">When the devise is not valid</response>
         // POST api/<DevisesController>
         [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         public ActionResult<Devise> Post([FromBody] Devise _devise)
         {
             if(!ModelState.IsValid)
@@ -91,8 +98,8 @@ namespace WSConvertisseur.Controllers
             {
                 return BadRequest();
             }
-            int index = Devises.FindIndex(d => _devise.Id == id);
-            if(id < 0)
+            int index = Devises.FindIndex(d => d.Id == id);
+            if(index < 0)
             {
                 return NotFound();
             }
@@ -104,7 +111,7 @@ namespace WSConvertisseur.Controllers
         /// Delete a devise
         /// </summary>
         /// <param name="id">The id of the devise to delete</param>
-        /// <returns></returns>
+        /// <returns>Http response</returns>
         // DELETE api/<DevisesController>/5
         [HttpDelete("{id}")]
         public ActionResult<Devise> Delete(int id)
