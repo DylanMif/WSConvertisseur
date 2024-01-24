@@ -37,8 +37,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod]
         public void GetById_NotExistingIdPassed()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
             // Act
             var result = controller.GetById(-50);
             // Assert
@@ -50,8 +48,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod]
         public void GetAll()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
             // Act
             var result = controller.GetAll();
             List<Devise> devise = new List<Devise>();
@@ -66,8 +62,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod]
         public void Post_AjoutCorrect()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
             // Act
             Devise newDevose = new Devise(4, "Rouble", 1510.6);
             var result = controller.Post(newDevose);
@@ -98,8 +92,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod]
         public void Put_BadId()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
             // Act
             Devise newDevise = new Devise(1, "Dollar", 1.14);
             var result = controller.Put(2, newDevise);
@@ -111,8 +103,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod]
         public void Put_InexistingId()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
             // Act
             Devise newDevise = new Devise(50, "Roubles", 1500.6);
             var result = controller.Put(50, newDevise);
@@ -124,8 +114,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod]
         public void Put_ValidUpdate()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
             // Act
             Devise newDevise = new Devise(2, "Roubles", 1500.6);
             var result = controller.Put(2, newDevise);
@@ -137,8 +125,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod]
         public void Delete_InexistingId()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
             // Act
             var result = controller.Delete(50);
             // Assert
@@ -149,8 +135,6 @@ namespace WSConvertisseur.Controllers.Tests
         [TestMethod]
         public void Delete_ValidId()
         {
-            // Arrange
-            DevisesController controller = new DevisesController();
             // Act
             var result = controller.Delete(1);
             // Assert
