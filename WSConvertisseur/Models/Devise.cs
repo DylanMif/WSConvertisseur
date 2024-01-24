@@ -1,9 +1,11 @@
-﻿namespace WSConvertisseur.Models
+﻿using System.ComponentModel.DataAnnotations;
+namespace WSConvertisseur.Models
 {
     public class Devise
     {
 		private int id;
 
+		[Required]
 		public int Id
 		{
 			get { return id; }
@@ -12,6 +14,7 @@
 
 		private string nomDevise;
 
+		[Required]
 		public string NomDevise
 		{
 			get { return nomDevise; }
@@ -20,6 +23,7 @@
 
 		private double taux;
 
+		[Required]
 		public double Taux
 		{
 			get { return taux; }
